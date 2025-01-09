@@ -1,0 +1,3 @@
+Consider the table Cities in the first worksheet of the attached file. Extend the table Cities with the following columns: country, latitude, longitude. Extract the required information from the web. Format the resulting table as an Excel Table. Keep the original table layout and style.
+
+
