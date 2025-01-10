@@ -1,0 +1,32 @@
+[STEP] I want to create an Excel template. I'll provide you with all the options to include in the template, and when I have finished, you'll format it as an .xlsx file. 
+
+[STEP] Create a single worksheet containing a table with the following columns: 
+- Date 
+- Category 
+- Description 
+- Amount 
+- Payment Method 
+Format the columns as an Excel table and assign the name "MainTable". Add 10 empty rows to the table.
+
+[STEP] Format cells Number as follows:  
+- Column A as a date (YYYY/MM/DD) 
+- Column B as text
+- Column C as text
+- Column D as currency with symbol $
+- Column E as text
+
+[STEP] Add a row below Amount and out of the table for total Expenses, calculated as the sum of all the Amounts.
+
+[STEP] Apply the following style to the table MainTable:
+First row:
+- Set the text to bold
+- Set the text color to black
+- Set the background color to light grey
+- Align text to the center
+Other rows:
+- Align text to the left for text columns and right for numeric columns
+- Set the background color to white for all the cell starting from the second row
+Borders:
+- Apply thin black borders
+
+
