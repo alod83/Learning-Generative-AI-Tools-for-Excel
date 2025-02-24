@@ -1,0 +1,143 @@
+Option Explicit
+
+Sub CreateWeeklySalesReport()
+    Dim wsData As Worksheet
+    Dim wsReport As Worksheet
+    Dim lo As ListObject
+    Dim rngData As Range
+    
+    Dim dict As Object
+    Dim key As Variant
+    Dim arrVal As Variant
+    
+    Dim r As Long
+    Dim lastReportRow As Long
+    
+    Dim dateVal As Date
+    Dim productID As Variant
+    Dim productName As String
+    Dim quantitySold As Long
+    Dim totalSale As Double
+    Dim weekNum As Long
+    
+    Dim weekKey As String
+    
+    '--- 1) Identify/Set the worksheet containing the MainTable ---
+    '    Adjust as needed if "MainTable" resides on a named sheet other than "Sheet1"
+    Set wsData = ThisWorkbook.Worksheets("Sheet1")
+    
+    ' Get the ListObject that has the name "MainTable"
+    On Error Resume Next
+    Set lo = wsData.ListObjects("MainTable")
+    On Error GoTo 0
+    
+    If lo Is Nothing Then
+        MsgBox "Table 'MainTable' not found on " & wsData.Name, vbExclamation
+        Exit Sub
+    End If
+    
+    Set rngData = lo.DataBodyRange
+    If rngData Is Nothing Then
+        MsgBox "Table 'MainTable' contains no data.", vbExclamation
+        Exit Sub
+    End If
+    
+    '--- 2) Create or replace the "Sales Report" sheet ---
+    On Error Resume Next
+    Application.DisplayAlerts = False
+    Worksheets("Sales Report").Delete  ' Delete if exists
+    Application.DisplayAlerts = True
+    On Error GoTo 0
+    
+    Set wsReport = ThisWorkbook.Worksheets.Add
+    wsReport.Name = "Sales Report"
+    
+    '--- 3) Use a Dictionary to gather weekly totals per Product ---
+    Set dict = CreateObject("Scripting.Dictionary")
+    
+    ' Identify column indices for clarity (optional but helpful)
+    Dim colDate As Long, colProductID As Long, colProductName As Long
+    Dim colQuantity As Long, colTotalAmount As Long
+    
+    colDate = lo.ListColumns("Date of Sale").Index
+    colProductID = lo.ListColumns("Product ID").Index
+    colProductName = lo.ListColumns("Product Name").Index
+    colQuantity = lo.ListColumns("Quantity Sold").Index
+    colTotalAmount = lo.ListColumns("Total Sale Amount").Index
+    
+    ' Loop through each row in the table
+    For r = 1 To rngData.Rows.Count
+        dateVal = rngData.Cells(r, colDate).Value
+        productID = rngData.Cells(r, colProductID).Value
+        productName = rngData.Cells(r, colProductName).Value
+        quantitySold = rngData.Cells(r, colQuantity).Value
+        totalSale = rngData.Cells(r, colTotalAmount).Value
+        
+        ' Calculate the week number for the date
+        weekNum = WorksheetFunction.WeekNum(dateVal, 2)  ' 2 => Week starts on Monday (ISO style)
+        
+        ' Construct a unique key: "WeekNum|ProductID"
+        weekKey = CStr(weekNum) & "|" & CStr(productID)
+        
+        ' If key doesn't exist, add it
+        ' Store an array: [WeekNum, ProductID, ProductName, TotalQuantity, TotalSales]
+        If Not dict.Exists(weekKey) Then
+            dict.Add weekKey, Array(weekNum, productID, productName, quantitySold, totalSale)
+        Else
+            ' Update existing entry
+            arrVal = dict(weekKey)
+            arrVal(3) = arrVal(3) + quantitySold   ' Add quantity
+            arrVal(4) = arrVal(4) + totalSale     ' Add total sale
+            dict(weekKey) = arrVal
+        End If
+    Next r
+    
+    '--- 4) Output the aggregated results on the "Sales Report" sheet ---
+    With wsReport
+        .Range("A1").Value = "Week"
+        .Range("B1").Value = "Product ID"
+        .Range("C1").Value = "Product Name"
+        .Range("D1").Value = "Total Quantity Sold"
+        .Range("E1").Value = "Total Sale Amount"
+    End With
+    
+    Dim rowReport As Long
+    rowReport = 2
+    
+    For Each key In dict.Keys
+        arrVal = dict(key)
+        
+        ' arrVal(0) = WeekNum
+        ' arrVal(1) = ProductID
+        ' arrVal(2) = ProductName
+        ' arrVal(3) = Total Quantity
+        ' arrVal(4) = Total Sale
+        With wsReport
+            .Cells(rowReport, 1).Value = arrVal(0)
+            .Cells(rowReport, 2).Value = arrVal(1)
+            .Cells(rowReport, 3).Value = arrVal(2)
+            .Cells(rowReport, 4).Value = arrVal(3)
+            .Cells(rowReport, 5).Value = arrVal(4)
+        End With
+        
+        rowReport = rowReport + 1
+    Next key
+    
+    '--- 5) Convert the summarized data range into a Table ---
+    lastReportRow = wsReport.Cells(wsReport.Rows.Count, "A").End(xlUp).Row
+    
+    Dim reportRange As Range
+    Set reportRange = wsReport.Range("A1:E" & lastReportRow)
+    
+    Dim loReport As ListObject
+    Set loReport = wsReport.ListObjects.Add(SourceType:=xlSrcRange, _
+                                           Source:=reportRange, _
+                                           XlListObjectHasHeaders:=xlYes)
+    loReport.Name = "WeeklySalesReport"
+    loReport.TableStyle = "TableStyleLight10"   ' Pick your preferred style
+    
+    ' Optional: Auto-fit columns for readability
+    wsReport.Columns.AutoFit
+    
+    MsgBox "Weekly Sales Report has been created on the 'Sales Report' sheet.", vbInformation
+End Sub
