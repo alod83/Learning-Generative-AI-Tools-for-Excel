@@ -1,0 +1,20 @@
+Consider an Excel table named MainTable representing sales, with the following columns: Transaction ID, 
+Date of Sale, 
+Product ID, 
+Product Name, 
+Quantity Sold, 
+Unit Price, 
+Total Sale Amount, 
+Payment Method, 
+Store Location, 
+Customer Type. 
+
+Write a VBA macro that analyzes the dataset and automatically highlights high and low sales based on a user-defined threshold.
+
+Request User Input: The macro should prompt the user to enter two thresholds:
+A high threshold to identify high sales.
+A low threshold to identify low sales.
+Apply Conditional Formatting:
+Cells with sales above the high threshold should be highlighted in green.
+Cells with sales below the low threshold should be highlighted in red.
+Preserve the Original Data: The macro should update only the formatting without modifying the original data.
