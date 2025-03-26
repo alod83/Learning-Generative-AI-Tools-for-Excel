@@ -14,7 +14,40 @@ Format cells Number as follows:
 - Column B as text
 - Column C as text
 - Column D as text
-- Column E as ISBN number (with - properly placed)
+- Column E as I want to create an Excel template describing books. I'll provide you with all the options to include in the template, and when I have finished, you'll format it as an .xlsx file. 
+
+Create a single worksheet containing a table with the following columns: 
+- Title 
+- Author 
+- Publisher 
+- Year
+- ISBN 
+Format the table as an Excel table and name it MainTable. 
+Add 10 empty rows to the table.
+
+Format cells Number as follows:  
+- Column A as a text 
+- Column B as text
+- Column C as text
+- Column D as text
+- Column E as custom: ###-#-###-#####-#
+
+Add a row below ISBN and out of the table for total books, calculated as the count of all the rows.
+
+Apply the following style to the table MainTable:
+
+First row:
+- Set the text to bold
+- Set the text color to white
+- Set the background color to black
+- Align text to the center
+
+Other rows:
+- Align text to the left for text columns and right for numeric columns
+- Alternate the background color of the row starting from the second between light gray and white
+
+Borders:
+- Apply thin black borders
 
 Add a row below ISBN and out of the table for total books, calculated as the count of all the rows.
 
