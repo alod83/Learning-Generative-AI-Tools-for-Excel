@@ -1,0 +1,1 @@
+Create a pivot table showing the average percentage of people who read books, with age group as rows and number of books read as columns.
