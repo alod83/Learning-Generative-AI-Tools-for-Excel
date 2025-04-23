@@ -1,0 +1,5 @@
+Extract the first and last level in the Education Level column and insert them into two new columns. If the Education Level is TOTAL, write 0 in the first level column and 8 in the last level.
+
+NOTE:
+If Copilot extracts only the first level of education, continue the conversation, writing the following prompt:
+Extract the last level in the Education Level column and insert it into a new column. If the Education Level is TOTAL, write 8 in the last level.
