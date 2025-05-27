@@ -1,0 +1,12 @@
+Preliminary Prompts:
+1. Highlight missing values
+2. Suggest a strategy to fill in missing values in column Gender
+
+3. Prompts to infer missing values in the Gender Column from the FullName column:
+a. Split column FullName in two columns Name and Surname
+b. Provide a sample NameGenderTable
+c. Provide a formula to determine Gender from the NameGenderTable
+
+4. Prompt to fill in missing values in the Diagnosis and Blood pressure columns:
+a. Replace missing values in Diagnosis and Blood Pressure columns with Unknown
+
