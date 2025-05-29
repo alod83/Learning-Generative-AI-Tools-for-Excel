@@ -1,0 +1,18 @@
+1. Prompts for task 1
+a. Suggest how to remove quotation marks from the column Age
+b. Format the Cleaned Age as numbers.
+c. Align values in the Cleaned Age column to right.
+
+2. Prompts for task 2
+a. Suggest how to remove quotation marks from the column Billing Amount
+b. Apply the formula to the Cleaned Billing Amount column
+c. Split Cleaned Billing Amount 2 into two columns: one for currency and the other for numbers
+c. Format Amount as numbers, align to right and format with two decimal numbers
+
+Prompts for task 3
+a. Format Admission Date as Date
+b. Suggest how to replace . with / in column Admission Date
+c. You suggestion does not work
+d. Suggest an alternative way without formulas
+e. Convert all dates in the column Cleaned Admission Date to the format YYYY-MM-DD.
+
