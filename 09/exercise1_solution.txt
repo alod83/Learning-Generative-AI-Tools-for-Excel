@@ -1,0 +1,1 @@
+Consider the Orders table. Create a two-variable data table showing revenue changes when both the price (30-50 €) and quantity sold (10-30 units) vary.
