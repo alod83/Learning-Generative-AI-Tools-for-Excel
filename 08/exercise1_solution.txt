@@ -1,0 +1,14 @@
+# Star worksheet
+
+1. Select the Star worksheet
+2. Select cell A1
+3. Open Copilot and write the following prompt:
+Consider columns x and y in the worksheet, Star. Calculate the range, the variance, the standard deviation, and the IQR using an Excel formula, and list the instructions to build a table with the following columns: Measure, x, and y.
+
+
+# Bullseye worksheet
+
+1. Select the Bullseye worksheet
+2. Select cell A1
+3. Open Copilot and write the following prompt:
+Consider columns x and y in the worksheet, Bullseye. Calculate the range, the variance, the standard deviation, and the IQR using an Excel formula, and list the instructions to build a table with the following columns: Measure, x, and y.

@@ -1,0 +1,2 @@
+1. Consider table Dino. Given the values of the mean and median for column y, analyze which measure more accurately reflects the data distribution, and explain what this reveals about the presence of skewness or outliers in the dataset.
+2. Consider Table Dino. Analyze the distribution of values in column y and determine whether the dataset is unimodal, bimodal, or multimodal. Identify the mode(s) and explain what this reveals about possible subgroups or patterns in the data.
