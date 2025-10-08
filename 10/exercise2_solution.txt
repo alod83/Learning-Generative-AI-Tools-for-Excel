@@ -1,0 +1,10 @@
+1. Prompts for creating the summary:
+- Propose five titles for a report showing statistics about product sales across different stores and regions over the first quarter of 2025.
+- Based on the columns in the Sales table, provide a short description of the dataset.
+- List the worksheets in this workbook.
+2. Prompts for creating the dashboard:
+- List the steps to copy all the charts in the various worksheets to a new worksheet called Dashboard.
+- Write a macro that performs the following steps: [paste steps indicated by Copilot]
+- Write another macro that adds a slicer in the Dashboard worksheet for the Entity field synchronized with all the charts.
+
+
