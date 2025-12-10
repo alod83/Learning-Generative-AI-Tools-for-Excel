@@ -1,0 +1,8 @@
+1. Manually add two new columns to the table called Length of Stay and Severity
+2. Write the following prompt for GPT for Excel Word:
+    Based on the Admission and Discharge Date, calculate the Length of Stay column
+3. Write the following prompt for GPT for Excel Word:
+    Based on the Length of Stay column, calculate the  Severity column as follows:
+    - 0-3 days - severity is Mild
+    - 4-10 days - severity is Moderate
+    - 11+ days - severity is Severe

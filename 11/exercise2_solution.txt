@@ -1,0 +1,4 @@
+1. From the Sally Suite tab of the Ribbon, select VBA Assistant.
+2. In the chatbox write the following prompt:
+Generate a VBA macro that filters Table1 to show only rows where Outcome = ‘Discharged’ and then formats the resulting rows with a yellow background. 
+3. Copy the generated code and paste it as a new macro.

@@ -1,0 +1,2 @@
+1. Consider the Sales table. Insert a line chart showing NetUnits by Month. 
+2. Describe the steps to remove the gridlines and set the title in a chart.
