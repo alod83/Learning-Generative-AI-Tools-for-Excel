@@ -2,11 +2,17 @@ import os
 import xlwings as xw
 from openai import OpenAI
 
+from pathlib import Path
+
 def load_api_key(path="openai_key.txt"):
-    with open(path, "r", encoding="utf-8") as f:
+    base = Path(__file__).parent
+    abs_path = (base / path).expanduser().resolve()
+    with abs_path.open("r", encoding="utf-8") as f:
         return f.read().strip()
 
-client = OpenAI(api_key=load_api_key())
+os.environ["OPENAI_API_KEY"] = load_api_key()
+
+client = OpenAI()
 
 def main():
     
