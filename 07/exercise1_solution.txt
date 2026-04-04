@@ -1,5 +1,5 @@
 Prompt for Point 1:
-Normalize the strings in the "Customer Name" column by capitalizing the first letter of each word (first name and last name), and converting the remaining letters to lowercase. Ensure that extra spaces are removed and formatting is consistent. Next, split the Customer Name column into two columns, Name and Surname.
+Normalize the strings in the "Customer Name" column by capitalizing the first letter of each word (first name and last name), and converting the remaining letters to lowercase. For surnames like McGuillan, McDonald, or O'Connor, the internal capital letter must also be preserved (e.g., McGuillan, not Mcguillan). Ensure that extra spaces are removed and formatting is consistent. Next, split the Customer Name column into two columns, Name and Surname.
 
 Prompt for Point 2:
 Create an ID using customer name and date with no spaces, all lowercase.
