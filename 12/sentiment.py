@@ -18,7 +18,7 @@ def main():
     
     wb = xw.Book.caller()
     sheet = wb.sheets[0]
-    sheet[f"H1"].value = "Sentiment"
+    sheet["H1"].value = "Sentiment"
  
     row = 2
     while True:
